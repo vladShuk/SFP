@@ -1,0 +1,117 @@
+= Social Feedback Platform
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[introduction]
+= Introduction
+
+SFP is a RESTful application for social feedback platform
+
+[[overview]]
+= Overview
+
+[[overview-http-verbs]]
+== HTTP verbs
+SFP tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP verbs.
+|===
+| Verb | Usage
+
+| `GET`
+| Used to retrieve a resource
+
+| `POST`
+| Used to create a new resource
+
+| `PATCH`
+| Used to update an existing resource, including partial updates
+
+| `PUT`
+| Used to update an existing resource, full updates only
+
+| `DELETE`
+| Used to delete an existing resource
+|===
+
+[[overview-http-status-codes]]
+== HTTP status codes
+Product-service tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP status codes.
+ 
+|===
+| Status code | Usage
+
+| `200 OK`
+| Standard response for successful HTTP requests.<br>
+  The actual response will depend on the request method used.<br>
+  In a GET request, the response will contain an entity corresponding to the requested resource.<br>
+  In a POST request, the response will contain an entity describing or containing the result of the action.
+ 
+| `201 Created`
+| The request has been fulfilled and resulted in a new resource being created.
+
+| `204 No Content`
+| The server successfully processed the request, but is not returning any content.
+
+| `400 Bad Request`
+| The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+
+| `404 Not Found`
+| The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible.
+|===
+
+[[resources]]
+= Resources
+
+[[resources-domain_category]]
+== Domain Category
+
+[[resource-domain_category-save]]
+=== Save new Domain Category with Class Category
+A `POST` request saves a new domain category with new class Category
+
+==== Request
+include::{snippets}/save-domain-category-with-class-category/http-request.adoc[]
+
+==== Success Response
+include::{snippets}/save-domain-category-with-class-category/http-response.adoc[]
+
+==== Error Response
+include::{snippets}/save-domain-category-with-class-category-with-empty-names/http-response.adoc[]
+include::{snippets}/save-domain-category-with-class-category-with-incorrect-names/http-response.adoc[]
+include::{snippets}/save-domain-category-with-class-category-with-existing-names/http-response.adoc[]
+
+[[resource-domain_category-get]]
+=== Return list of Domain Categories
+A `GET` request return a list of domain categories
+
+==== Request
+include::{snippets}/get-domain-categories/http-request.adoc[]
+
+==== Success Response
+include::{snippets}/get-domain-categories/http-response.adoc[]
+
+[[resources-class_category]]
+== Class Category
+
+[[resource-class_category-save]]
+=== Save new Class Category
+A `POST` request saves a new class category
+
+==== Request
+include::{snippets}/save-class-category/http-request.adoc[]
+include::{snippets}/save-class-category/path-parameters.adoc[]
+
+==== Success Response
+include::{snippets}/save-class-category/http-response.adoc[]
+
+==== Error Response
+include::{snippets}/save-class-category-with-empty-name/http-response.adoc[]
+include::{snippets}/save-class-category-with-incorrect-name/http-response.adoc[]
+include::{snippets}/save-class-category-with-existing-name/http-response.adoc[]
+include::{snippets}/save-class-category-with-incorrect-domain-category-id/http-response.adoc[]
+include::{snippets}/save-class-category-with-alphabetic-domain-category-id/http-response.adoc[]
